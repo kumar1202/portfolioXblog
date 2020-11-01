@@ -6,7 +6,21 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Kumar Abhijeet`,
+    // Default title of the page
+    siteTitleAlt: `Kumar Abhijeet`,
+    // Can be used for e.g. JSONLD
+    siteHeadline: `Kumar Abhijeet`,
+    // Will be used to generate absolute URLs for og:image etc.
+    siteUrl: `https://kumarabhijeet.me`,
+    // Used for SEO
+    siteDescription: `A portfolio X blog by Kumar Abhijeet`,
+    // Will be set on the <html /> tag
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/banner.jpg`,
+    // Twitter Handle
+    author: `@kumar_abhijeet3`,
   },
   plugins: [
     {
@@ -26,11 +40,11 @@ module.exports = {
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            url: `https://twitter.com/kumar_abhijeet3`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `SoundCloud`,
+            url: `https://soundcloud.com/kumar-abhijeet-161517205`,
           },
         ],
       },
@@ -45,9 +59,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `Kumar Abhijeet`,
+        short_name: `kumar-abhijeet`,
+        description: `A portfolio x blog by Kumar Abhijeet`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
