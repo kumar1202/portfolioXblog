@@ -43,9 +43,17 @@ module.exports = {
             url: `https://twitter.com/kumar_abhijeet3`,
           },
           {
-            name: `SoundCloud`,
-            url: `https://soundcloud.com/kumar-abhijeet-161517205`,
+            name: `Linkedin`,
+            url: `https://www.linkedin.com/in/kumar-abhijeet-3b4b4a137/`,
           },
+          {
+            name: `Github`,
+            url: `https://github.com/kumar1202`,
+          },
+          {
+            name: `Newsletter`,
+            url: `https://www.getrevue.co/profile/perpetualbraindump`,
+          }
         ],
       },
     },
