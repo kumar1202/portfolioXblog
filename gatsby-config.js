@@ -49,10 +49,6 @@ module.exports = {
           {
             name: `Github`,
             url: `https://github.com/kumar1202`,
-          },
-          {
-            name: `Newsletter`,
-            url: `https://www.getrevue.co/profile/perpetualbraindump`,
           }
         ],
       },
