@@ -1,5 +1,5 @@
 ---
-title: "Building a Multi-Region APIOps Platform with Gojira and Kong"
+title: "Gojira: Build Multi-Region APIOps Platform with Kong"
 date: 2024-10-09
 description: "Deploying Kong in multiple datacenters across various regions while maintaining service equivalence"
 tags:
@@ -8,8 +8,6 @@ banner: ./gojira.jpeg
 slug: /building-multi-region-kong-apiops
 ---
 
-# Gojira: Build Multi-Region APIOps Platform with Kong
-
 This project started as a requirement to solve the problem of maintaining multiple sources of truth for multiple Kong deployments, when all the Kong cluster essentially need to have parity in major components across services and routes across all Kong clusters in the same environment.
 
 Along with the above, there was a requirement for assigning services to specific Kong clusters depending on compliance types.
@@ -17,7 +15,7 @@ Along with the above, there was a requirement for assigning services to specific
 Hence, this document serves a project home for this piece of software/framework, or whatever it's supposed to be called.
 
 
-# Goals
+## Goals
 
 * **API Governance**: Achieve standardisation for APIs to keep them consistent throughout the org by having a single source of truth and
 effectively manage the API lifecycle.
@@ -29,21 +27,13 @@ across all the Infra.
 * **Service Equivalence across DCs**: Maintain the same set of Public API configurations along with upstream services across multiple
 DCs.
 
-# Terminology
-
-
-
+## Terminology
 
 * **Compliance Zone** : means the volume area covered by the compliance boundary line (Compliance boundary line is the boundary line
 defining a volume area outside of that area where the exposure level is not exceeded).
 * **DMZ, App & DB Zones**: 3-tier network zones for keeping outside traffic(DMZ), applications and databases in different networks for security and compliance purposes.
 
-
-# Proposal
-
-
 ## First Principles
-
 
 * **Traffic Segregation**: API Gateway should be deployed as separate instance per region and per compliance zone. For 2 regions with 2
 compliance zones each, there will be 2 Gateway deployments for each zone for each of the 2
@@ -55,16 +45,14 @@ all the regions.
 through the Internal DMZ network.
 * **Intra-Zone communication**: Intra-Zone communication can be either TLS encrypted or unencrypted on both PCI and non-PCI zones.
 
-
-
 ## High Level Architecture
 
-## External API Gateway
+### External API Gateway
 
 The external API gateway in form of the Kong Gateway deployment will be designed keeping the first principles in mind and is detailed as
 follows:
 
-### Deployment Model
+#### Deployment Model
 
 Kong will be deployed in hybrid mode, i.e, Data Plane(DP) and Control Plane(CP) Nodes are deployed as separate entities along with a
 PostgreSQL database used to manage and store configurations for that Kong instance and communicates with the CP nodes.
@@ -81,7 +69,7 @@ having Control and Data Plane on same nodes.
 * **Lower attack surface area** : Just the Kong DP nodes will be exposed in the DMZ zone.
 * **Horizontally Scalable**: DP and CP nodes can horizontally scaled out independently.
 
-### Service Equivalence
+#### Service Equivalence
 
 **Problem Statement**
 
@@ -190,7 +178,7 @@ the service onboarding/offboarding, the merge event will trigger a sync job with
 There is a scope for race conditions during this workflow, but MRs will not allowed to merge unless the latest commit on master is pulled on
 the given branch.
 
-### SSL Termination
+#### SSL Termination
 
 For the APIs which require certificate based TLS/SSL authentication, TLS/SSL termination will happen at the Kong Gateway level itself.
 
